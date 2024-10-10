@@ -81,32 +81,32 @@ Let's make the container named 'ubuntu-container' step by step !
 ---
  1. **Pull** ubuntu docker images
     ```
-    $ docker pull ubuntu
+    docker pull ubuntu
     ```
     ---
  2. Make the directory to share with your container and make some text to test **Bind** works
     ```
-    $ mkdir ossp_host_dir
-    $ cd ossp_host_dir && vim shared_file.txt
+    mkdir ossp_host_dir
+    cd ossp_host_dir && vim shared_file.txt
     ```
     ---
  3. **Run** the docker container named 'ubunt-container' using **Bind mounts**   
     ```
-    $ docker run -dit --nmae ossp-container -v <your_absolute_path>:/mnt/ossp_container_dir ubuntu
+    docker run -dit --nmae ossp-container -v <your_absolute_path>:/mnt/ossp_container_dir ubuntu
     ```
     ---
  4. **Attach** to 'ubuntu-container' for work in the container
     ```
-    $ docker attach ossp-container
+    docker attach ossp-container
     ```
     ---
  5. *In your docker container*, install git & python3  
     ```
-    # apt-get update && apt-get install -y git python3
+    apt-get update && apt-get install -y git python3
     ```
     and check using 
     ```
-    # git --version && python3 --version
+    git --version && python3 --version
     ```
     if it is not errored, well done and then command ```exit``` to exit. 
 
@@ -116,14 +116,14 @@ Let's make the container named 'ubuntu-container' step by step !
 
     First, you must start your container
     ```
-    $ docker start ossp-container
+    docker start ossp-container
     ```
     And check the environment using followed command
     ```
-    $ docker exec ossp-container cat /etc/os-release
-    $ docker exec ossp-container git --version
-    $ docker exec ossp-container python3 --version
-    $ docker inspect --format="{{ .HostConfig.Binds }}" ossp-container
+    docker exec ossp-container cat /etc/os-release
+    docker exec ossp-container git --version
+    docker exec ossp-container python3 --version
+    docker inspect --format="{{ .HostConfig.Binds }}" ossp-container
     ```
     And expecting result is followed 
 
